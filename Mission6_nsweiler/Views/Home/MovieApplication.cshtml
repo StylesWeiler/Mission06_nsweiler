@@ -9,10 +9,12 @@
 <h1>Fill out the movie application: </h1>
 
 @* Form to fill out information about a movie  *@
+@* Razor is the mash up of C#, HTML, CSS *@
 <div>
     <form method="post">
-        <label asp-for="category">Category:</label>
-        <input asp-for="category" /><br />
+
+        @* Ensures validation for required fields *@
+        <div asp-validation-summary="All"></div> 
 
         <label asp-for="title">Title:</label>
         <input asp-for="title" /><br />
@@ -38,6 +40,17 @@
         <label asp-for="notes">Notes:</label>
         <input asp-for="notes" /><br />
 
+        <label asp-for="categoryId">Category:</label>
+        <select asp-for="categoryId">
+            <option value="">Choose a category:</option>
+        @* Provides each category option in a dropdown menu *@
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.categoryId">@c.categoryName</option>
+            }
+
+        </select><br />
+
         <label asp-for="edited">Edited?</label>
         <select asp-for="edited">
             <option value="true">Yes</option>
@@ -45,5 +58,6 @@
         </select><br />
         @* submission button that sends the form data to to the controller *@
         <button type="submit">Submit Application</button>
+
     </form>
 </div>

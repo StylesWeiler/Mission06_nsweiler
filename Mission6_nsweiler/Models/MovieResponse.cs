@@ -13,9 +13,6 @@ namespace Mission6_nsweiler.Models
         public int movieId { get; set; }
 
         [Required]
-        public string category { get; set; }
-
-        [Required]
         public string title { get; set; }
 
         [Required]
@@ -33,5 +30,10 @@ namespace Mission6_nsweiler.Models
         public string notes { get; set; }
 
         public bool edited { get; set; }
+
+        // Build the foreign key relationship
+        [Required]
+        public int categoryId { get; set; } // foreign key
+        public Category category { get; set; } // paired with an instance of the Category type creates a connection between the two tables
     }
 }

@@ -14,15 +14,31 @@ namespace Mission6_nsweiler.Models
 
         }
 
-        public DbSet<MovieResponse> responses { get; set; }
+        public DbSet<MovieResponse> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb) // overrides the default conditions for OnModelCreating
         {
-            mb.Entity<MovieResponse>().HasData(
+
+           mb.Entity<Category>().HasData(
+
+               new Category { categoryId = 1, categoryName = "Action" },
+               new Category { categoryId = 2, categoryName = "Thriller" },
+               new Category { categoryId = 3, categoryName = "Drama" },
+               new Category { categoryId = 4, categoryName = "Western" },
+               new Category { categoryId = 5, categoryName = "Horror" },
+               new Category { categoryId = 6, categoryName = "Science Fiction" },
+               new Category { categoryId = 7, categoryName = "Adventure" },
+               new Category { categoryId = 8, categoryName = "Comedy" },
+               new Category { categoryId = 9, categoryName = "Animation" }
+
+          );
+
+           mb.Entity<MovieResponse>().HasData(
                 new MovieResponse
-                {
+                { 
                     movieId = 1,
-                    category = "Action",
+                    categoryId = 1,
                     title = "Avengers",
                     year = "2012",
                     director = "",
@@ -35,7 +51,7 @@ namespace Mission6_nsweiler.Models
                 new MovieResponse
                 {
                     movieId = 2,
-                    category = "Action",
+                    categoryId = 1,
                     title = "Star Wars",
                     year = "1977",
                     director = "George Lucas",
@@ -48,7 +64,7 @@ namespace Mission6_nsweiler.Models
                 new MovieResponse
                 {
                     movieId = 3,
-                    category = "Action",
+                    categoryId = 1,
                     title = "Rocky",
                     year = "1977",
                     director = "Rocky",
