@@ -32,8 +32,8 @@ namespace Mission6_nsweiler.Models
         public bool edited { get; set; }
 
         // Build the foreign key relationship
-        [Required]
-        public int categoryId { get; set; } // foreign key
+        [Required (ErrorMessage = "The category field is required.")]
+        public int? categoryId { get; set; } // foreign key
         public Category category { get; set; } // paired with an instance of the Category type creates a connection between the two tables
     }
 }
